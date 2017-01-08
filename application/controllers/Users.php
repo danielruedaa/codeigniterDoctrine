@@ -123,4 +123,19 @@ public function remove($id)
     $this->doctrine->em->flush();
 }
 
+    /**
+     * @Entity(repositoryClass="Repositories\UserRepository")
+     * @Table(name="users")
+     */
+    public function find_by_username()
+    {
+        $user = $this->doctrine->em->getRepository("Entities\\User")->findByUsername("pepe");
+        echo sprintf(
+            "- %s, %s, %s, %s <br>",
+            $user->getUsername(), $user->getPassword(), $user->getEmail(), $user->getCreated()->format("d/m/Y")
+        );
+    }
+
+
+
 }

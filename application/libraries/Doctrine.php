@@ -13,9 +13,6 @@ class Doctrine {
     {
         //cargamos la configuración de base de datos de codeigniter
         require APPPATH . "config/database.php";
-        // para repositrios  
-        $repositoriesClassLoader = new ClassLoader('Repositories', rtrim(APPPATH . "models" ));
-        $repositoriesClassLoader->register();
 
 
         //utilizamos el namespace Entities para mapear el directorio models
@@ -57,5 +54,9 @@ class Doctrine {
 
         // Creamos el EntityManager
         $this->em = EntityManager::create($connectionOptions, $config);
+
+        // para repositrios
+        $repositoriesClassLoader = new ClassLoader('Repositories', rtrim(APPPATH . "models" ));
+        $repositoriesClassLoader->register();
     }
 }
