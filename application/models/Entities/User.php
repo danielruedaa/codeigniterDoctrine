@@ -2,7 +2,7 @@
 namespace Entities;
 
 /**
- * @Entity
+ * @Entity(repositoryClass="Repositories\UserRepository")
  * @Table(name="users")
  */
 class User

@@ -19,6 +19,11 @@ class Doctrine {
         $entitiesClassLoader = new ClassLoader('Entities', rtrim(APPPATH . "models" ));
         $entitiesClassLoader->register();
 
+        // para repositrios
+        $repositoriesClassLoader = new ClassLoader('Repositories', rtrim(APPPATH . "models" ));
+        $repositoriesClassLoader->register();
+
+
         //utilizamos el namespace Proxies para mapear el directorio models/proxies
         $proxiesClassLoader = new ClassLoader('Proxies', APPPATH.'models/proxies');
         $proxiesClassLoader->register();
@@ -55,8 +60,5 @@ class Doctrine {
         // Creamos el EntityManager
         $this->em = EntityManager::create($connectionOptions, $config);
 
-        // para repositrios
-        $repositoriesClassLoader = new ClassLoader('Repositories', rtrim(APPPATH . "models" ));
-        $repositoriesClassLoader->register();
     }
 }
